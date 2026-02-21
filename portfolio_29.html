@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SUREN NAIK // VIDEO PORTFOLIO</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+:root { --cyan:#00f5ff; --magenta:#ff00aa; --dark:#050510; }
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--dark);color:#c8d8ff;font-family:'Exo 2',sans-serif;overflow-x:hidden;}
+.grid-bg{position:fixed;inset:0;background-image:linear-gradient(rgba(0,245,255,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(0,245,255,0.05) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;z-index:0;}
+.vignette{position:fixed;inset:0;background:radial-gradient(ellipse at center,transparent 50%,rgba(5,5,16,0.8) 100%);pointer-events:none;z-index:1;}
+main{position:relative;z-index:10;}
+
+/* HERO */
+.hero{padding:5rem 2rem 3.5rem;display:flex;flex-direction:column;align-items:center;text-align:center;position:relative;}
+.corner{position:absolute;width:50px;height:50px;}
+.corner-tl{top:1.5rem;left:1.5rem;border-top:2px solid var(--cyan);border-left:2px solid var(--cyan);}
+.corner-tr{top:1.5rem;right:1.5rem;border-top:2px solid var(--cyan);border-right:2px solid var(--cyan);}
+.corner-bl{bottom:1.5rem;left:1.5rem;border-bottom:2px solid var(--magenta);border-left:2px solid var(--magenta);}
+.corner-br{bottom:1.5rem;right:1.5rem;border-bottom:2px solid var(--magenta);border-right:2px solid var(--magenta);}
+.hero-eyebrow{font-family:'Share Tech Mono',monospace;font-size:0.75rem;letter-spacing:0.5em;color:var(--cyan);opacity:0.8;margin-bottom:0.8rem;}
+.hero-small{font-family:'Exo 2',sans-serif;font-size:1.1rem;font-weight:300;color:rgba(200,216,255,0.5);letter-spacing:0.4em;text-transform:uppercase;margin-bottom:0.4rem;font-style:italic;}
+.hero-name{font-family:'Bank Gothic','BankGothic Md BT','Bank Gothic Medium BT',sans-serif;font-size:clamp(2.5rem,8vw,6rem);font-weight:700;color:#fff;letter-spacing:0.04em;line-height:1.1;margin-bottom:0.5rem;}
+.hero-accent{color:var(--cyan);text-shadow:0 0 20px rgba(0,245,255,0.7),0 0 60px rgba(0,245,255,0.3);display:block;}
+.hero-divider{width:80px;height:2px;background:linear-gradient(to right,var(--magenta),var(--cyan));margin:0.6rem auto 0.8rem;}
+.hero-subtitle{font-family:'Exo 2',sans-serif;font-size:clamp(0.85rem,2vw,1.1rem);font-weight:300;color:var(--cyan);letter-spacing:0.35em;text-transform:uppercase;margin-bottom:1.5rem;text-shadow:0 0 12px rgba(0,245,255,0.6);}
+.hero-tags{display:flex;gap:0.8rem;flex-wrap:wrap;justify-content:center;}
+.tag{font-family:'Exo 2',sans-serif;font-size:0.85rem;font-weight:600;padding:0.45rem 1.2rem;border:1px solid var(--magenta);color:var(--magenta);letter-spacing:0.1em;text-transform:uppercase;transition:all 0.3s;cursor:default;}
+.tag:hover{background:var(--magenta);color:#000;}
+
+/* SECTION HEADER */
+.section-header{padding:3rem 2rem 1.5rem;max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:1.5rem;}
+.section-num{font-family:'Share Tech Mono',monospace;font-size:0.7rem;letter-spacing:0.4em;color:var(--cyan);opacity:0.5;white-space:nowrap;}
+.section-title{font-family:'Bank Gothic','BankGothic Md BT','Bank Gothic Medium BT',sans-serif;font-size:clamp(2rem,5vw,3rem);font-weight:700;color:#fff;letter-spacing:0.1em;text-shadow:0 0 20px rgba(0,245,255,0.3);}
+.section-line{flex:1;height:1px;background:linear-gradient(to right,var(--cyan),transparent);opacity:0.3;}
+
+/* PROJECTS */
+.projects{padding:0.5rem 2rem 4rem;max-width:1200px;margin:0 auto;}
+.projects-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;}
+.card-full{grid-column:span 2;}
+.project-card{background:rgba(0,245,255,0.02);border:1px solid rgba(0,245,255,0.15);overflow:hidden;transition:border-color 0.3s,transform 0.3s,box-shadow 0.3s;cursor:pointer;}
+.project-card:hover{border-color:var(--cyan);transform:translateY(-5px);box-shadow:0 16px 50px rgba(0,245,255,0.12);}
+.project-thumb{width:100%;aspect-ratio:16/9;position:relative;overflow:hidden;}
+.thumb-inner{width:100%;height:100%;display:flex;align-items:center;justify-content:center;position:relative;}
+.t1{background:radial-gradient(ellipse at 30% 30%,#001a3a 0%,#050510 70%);}
+.t2{background:radial-gradient(ellipse at 70% 30%,#1a0030 0%,#050510 70%);}
+.t3{background:radial-gradient(ellipse at 30% 70%,#001a10 0%,#050510 70%);}
+.t4{background:radial-gradient(ellipse at 70% 70%,#1a0800 0%,#050510 70%);}
+.t5{background:radial-gradient(ellipse at 50% 50%,#0a0a30 0%,#050510 70%);}
+.blob{position:absolute;border-radius:50%;filter:blur(40px);pointer-events:none;}
+.play-btn{width:60px;height:60px;border:2px solid rgba(255,255,255,0.35);border-radius:50%;display:flex;align-items:center;justify-content:center;position:relative;z-index:2;transition:all 0.3s;}
+.play-btn::after{content:'';border-style:solid;border-width:10px 0 10px 20px;border-color:transparent transparent transparent rgba(255,255,255,0.65);margin-left:5px;transition:border-color 0.3s;}
+.project-card:hover .play-btn{border-color:var(--cyan);box-shadow:0 0 15px var(--cyan);transform:scale(1.1);}
+.project-card:hover .play-btn::after{border-color:transparent transparent transparent var(--cyan);}
+.thumb-fade{position:absolute;inset:0;background:linear-gradient(to top,rgba(5,5,16,0.95) 0%,transparent 55%);}
+.proj-badge{position:absolute;top:0.75rem;left:0.75rem;font-family:'Exo 2',sans-serif;font-size:0.65rem;font-weight:700;letter-spacing:0.2em;padding:0.25rem 0.7rem;background:var(--magenta);color:#000;text-transform:uppercase;z-index:3;}
+.proj-dur{position:absolute;bottom:0.6rem;right:0.75rem;font-family:'Share Tech Mono',monospace;font-size:0.75rem;color:var(--cyan);z-index:3;}
+.proj-info{padding:1.4rem;}
+.proj-title{font-family:'Bank Gothic','BankGothic Md BT','Bank Gothic Medium BT',sans-serif;font-size:1.3rem;font-weight:700;color:#fff;letter-spacing:0.06em;margin-bottom:0.6rem;}
+.proj-desc{font-family:'Exo 2',sans-serif;font-size:0.9rem;font-weight:300;color:rgba(200,216,255,0.6);line-height:1.65;margin-bottom:1rem;}
+.proj-tags{display:flex;gap:0.4rem;flex-wrap:wrap;}
+.ptag{font-family:'Exo 2',sans-serif;font-size:0.7rem;font-weight:600;letter-spacing:0.1em;padding:0.22rem 0.6rem;border:1px solid rgba(0,245,255,0.3);color:rgba(0,245,255,0.75);text-transform:uppercase;}
+
+.proj-video { width:100%; height:100%; object-fit:cover; display:block; background:#000; border:none; }
+.project-thumb { position:relative; width:100%; aspect-ratio:16/9; overflow:hidden; }
+.portrait .project-thumb { aspect-ratio:9/16; max-width:360px; margin:0 auto; }
+.proj-badge { position:absolute; top:0.75rem; left:0.75rem; z-index:3; pointer-events:none; }
+
+.portrait .project-thumb { aspect-ratio: 9/16; max-width: 400px; margin: 0 auto; }
+
+/* USP ACCORDION */
+.usp{padding:0.5rem 2rem 4rem;max-width:1200px;margin:0 auto;}
+.accordion{display:flex;flex-direction:column;border:1px solid rgba(0,245,255,0.15);}
+.acc-item{border-bottom:1px solid rgba(0,245,255,0.1);overflow:hidden;}
+.acc-item:last-child{border-bottom:none;}
+.acc-question{width:100%;background:transparent;border:none;cursor:pointer;padding:1.4rem 2rem;display:flex;justify-content:space-between;align-items:center;text-align:left;transition:background 0.3s;}
+.acc-question:hover{background:rgba(0,245,255,0.04);}
+.acc-item.active .acc-question{background:rgba(0,245,255,0.06);}
+.acc-q-left{display:flex;align-items:center;gap:1.2rem;}
+.acc-num{font-family:'Share Tech Mono',monospace;font-size:0.7rem;color:var(--cyan);opacity:0.5;letter-spacing:0.2em;}
+.acc-q-text{font-family:'Bank Gothic','BankGothic Md BT','Bank Gothic Medium BT',sans-serif;font-size:clamp(1rem,2.5vw,1.4rem);font-weight:700;color:#fff;letter-spacing:0.05em;}
+.acc-item.active .acc-q-text{color:var(--cyan);text-shadow:0 0 15px rgba(0,245,255,0.4);}
+.acc-icon{font-size:1.4rem;color:var(--cyan);transition:transform 0.4s;flex-shrink:0;line-height:1;}
+.acc-item.active .acc-icon{transform:rotate(45deg);}
+.acc-answer{max-height:0;overflow:hidden;transition:max-height 0.45s ease,padding 0.3s ease;padding:0 2rem 0 4.5rem;}
+.acc-item.active .acc-answer{max-height:200px;padding:0 2rem 1.5rem 4.5rem;}
+.acc-a-text{font-family:'Exo 2',sans-serif;font-size:0.95rem;font-weight:300;color:rgba(200,216,255,0.65);line-height:1.75;border-left:2px solid var(--magenta);padding-left:1.2rem;}
+
+/* CONTACT */
+.contact{padding:0.5rem 2rem 4rem;max-width:1200px;margin:0 auto;}
+.contact-wrapper{display:grid;grid-template-columns:1fr 1.4fr;gap:3rem;align-items:start;background:rgba(0,245,255,0.02);border:1px solid rgba(0,245,255,0.15);padding:3rem;}
+.contact-tagline{font-family:'Share Tech Mono',monospace;font-size:0.75rem;letter-spacing:0.4em;color:var(--cyan);opacity:0.7;text-transform:uppercase;margin-bottom:0.8rem;}
+.contact-heading{font-family:'Bank Gothic','BankGothic Md BT','Bank Gothic Medium BT',sans-serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;color:#fff;letter-spacing:0.06em;line-height:1.15;text-shadow:0 0 20px rgba(0,245,255,0.3);margin-bottom:1.5rem;}
+.contact-info{display:flex;flex-direction:column;gap:0.8rem;}
+.contact-detail{font-family:'Share Tech Mono',monospace;font-size:0.78rem;color:rgba(200,216,255,0.6);letter-spacing:0.1em;}
+.contact-detail span{color:var(--cyan);}
+.contact-form{display:flex;flex-direction:column;gap:1.2rem;}
+.form-group{display:flex;flex-direction:column;gap:0.4rem;}
+.form-label{font-family:'Exo 2',sans-serif;font-size:0.7rem;font-weight:600;letter-spacing:0.25em;color:var(--cyan);text-transform:uppercase;opacity:0.8;}
+.form-input,.form-select,.form-textarea{background:rgba(0,245,255,0.03);border:1px solid rgba(0,245,255,0.2);color:#fff;font-family:'Exo 2',sans-serif;font-size:0.95rem;font-weight:300;padding:0.75rem 1rem;outline:none;transition:border-color 0.3s,box-shadow 0.3s;width:100%;}
+.form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--cyan);box-shadow:0 0 15px rgba(0,245,255,0.1);}
+.form-input::placeholder,.form-textarea::placeholder{color:rgba(200,216,255,0.25);}
+.form-select{appearance:none;cursor:pointer;}
+.form-select option{background:#0a0a20;color:#fff;}
+.form-textarea{resize:vertical;min-height:120px;}
+.form-submit{font-family:'Bank Gothic','BankGothic Md BT',sans-serif;font-size:1rem;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;padding:0.9rem 2rem;background:transparent;border:2px solid var(--cyan);color:var(--cyan);cursor:pointer;transition:all 0.3s;align-self:flex-start;text-shadow:0 0 8px var(--cyan);}
+.form-submit:hover{background:var(--cyan);color:#000;box-shadow:0 0 25px rgba(0,245,255,0.4);text-shadow:none;}
+
+/* PERSONAL NOTE */
+.note-section{padding:0.5rem 2rem 4rem;max-width:1200px;margin:0 auto;}
+.note-wrapper{border:1px solid rgba(0,245,255,0.15);padding:3rem;position:relative;background:rgba(255,0,170,0.02);}
+.note-wrapper::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(to right,var(--magenta),var(--cyan),transparent);}
+.note-top{margin-bottom:1.5rem;}
+.note-label{font-family:'Share Tech Mono',monospace;font-size:0.7rem;letter-spacing:0.4em;color:var(--magenta);opacity:0.8;text-transform:uppercase;}
+.note-content{display:flex;gap:1.5rem;align-items:flex-start;margin-bottom:2rem;}
+.note-quote{font-family:'Bank Gothic','BankGothic Md BT',sans-serif;font-size:6rem;line-height:0.8;color:var(--cyan);opacity:0.15;flex-shrink:0;margin-top:0.5rem;}
+.note-text{display:flex;flex-direction:column;gap:1rem;}
+.note-main{font-family:'Exo 2',sans-serif;font-size:1.05rem;font-weight:300;color:rgba(200,216,255,0.75);line-height:1.85;}
+.note-highlight{color:var(--cyan);font-weight:600;}
+.note-sign{font-family:'Exo 2',sans-serif;font-size:1.05rem;font-weight:600;color:#fff;font-style:italic;margin-top:0.5rem;padding-top:1rem;border-top:1px solid rgba(0,245,255,0.1);}
+.note-author{display:flex;align-items:center;gap:1rem;}
+.note-line{flex:1;height:1px;background:linear-gradient(to right,var(--magenta),transparent);opacity:0.4;}
+.note-name{font-family:'Bank Gothic','BankGothic Md BT',sans-serif;font-size:1.1rem;color:#fff;letter-spacing:0.1em;white-space:nowrap;}
+
+/* FOOTER */
+footer{border-top:1px solid rgba(0,245,255,0.1);padding:2rem;max-width:1200px;margin:2rem auto 0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+.footer-name{font-family:'Bank Gothic','BankGothic Md BT',sans-serif;font-size:1rem;letter-spacing:0.25em;color:rgba(255,255,255,0.2);}
+.footer-links{display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap;}
+.footer-email{font-family:'Share Tech Mono',monospace;font-size:0.8rem;color:var(--cyan);letter-spacing:0.1em;text-decoration:none;text-shadow:0 0 8px var(--cyan);}
+.footer-email:hover{color:#fff;}
+.footer-social{font-family:'Exo 2',sans-serif;font-size:0.78rem;font-weight:600;letter-spacing:0.15em;text-decoration:none;text-transform:uppercase;padding:0.35rem 0.9rem;border:1px solid var(--magenta);color:var(--magenta);transition:all 0.3s;}
+.footer-social:hover{background:var(--magenta);color:#000;}
+.footer-yt{border-color:#ff3333;color:#ff3333;}
+.footer-yt:hover{background:#ff3333;color:#fff;}
+
+@media(max-width:768px){
+  .projects-grid{grid-template-columns:1fr;}
+  .card-full{grid-column:span 1;}
+  .contact-wrapper{grid-template-columns:1fr;gap:2rem;padding:1.5rem;}
+  .form-submit{align-self:stretch;text-align:center;}
+  footer{flex-direction:column;text-align:center;}
+  .footer-links{justify-content:center;}
+  .acc-answer{padding:0 1rem 0 2.5rem;}
+  .acc-item.active .acc-answer{padding:0 1rem 1.2rem 2.5rem;}
+}
+</style>
+</head>
+<body>
+<div class="grid-bg"></div>
+<div class="vignette"></div>
+<main>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="corner corner-tl"></div>
+  <div class="corner corner-tr"></div>
+  <div class="corner corner-bl"></div>
+  <div class="corner corner-br"></div>
+  <p class="hero-eyebrow">Suren Naik</p>
+  <p class="hero-small">we create</p>
+  <h1 class="hero-name">Content That<br><span class="hero-accent">Grows Your Brand</span></h1>
+  <div class="hero-divider"></div>
+  <p class="hero-subtitle">Video Editor &nbsp;&nbsp;/&nbsp;&nbsp; Videographer</p>
+  <div class="hero-tags">
+    <span class="tag">Video Editing</span>
+    <span class="tag">Reels &amp; Shorts</span>
+    <span class="tag">Commercials</span>
+    <span class="tag">Personal Branding</span>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<div class="section-header">
+  <span class="section-num">01 //</span>
+  <h2 class="section-title">PROJECTS</h2>
+  <div class="section-line"></div>
+</div>
+<section class="projects">
+  <div class="projects-grid">
+
+    <!-- 1. Real Estate FULL -->
+    <div class="project-card card-full">
+      <div class="project-thumb">
+        <iframe class="proj-video" src="https://www.youtube.com/embed/fWH_APPeWPc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <span class="proj-badge">Real Estate</span>
+      </div>
+      <div class="proj-info">
+        <h3 class="proj-title">REAL ESTATE PROPERTY TOUR</h3>
+        <p class="proj-desc">Cinematic walkthroughs shot on camera and gimbal - premium, smooth, steady footage that makes every property look high-end. Seamless transitions, colour grading, and precise cuts that help homes sell faster.</p>
+        <div class="proj-tags">
+          <span class="ptag">Property Tour</span>
+          <span class="ptag">Gimbal Shots</span>
+          <span class="ptag">Smooth Transitions</span>
+          <span class="ptag">Colour Grade</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. YouTube Editing FULL -->
+    <div class="project-card card-full">
+      <div class="project-thumb">
+        <iframe class="proj-video" src="https://www.youtube.com/embed/V0sDMbJMU8w" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <span class="proj-badge">YouTube</span>
+      </div>
+      <div class="proj-info">
+        <h3 class="proj-title">YOUTUBE VIDEO EDITING</h3>
+        <p class="proj-desc">Long-form YouTube content edited for maximum retention - clean cuts, engaging pacing, dynamic graphics, and colour grading that keeps your audience watching from start to finish and coming back for more.</p>
+        <div class="proj-tags">
+          <span class="ptag">Long Form</span>
+          <span class="ptag">Retention Editing</span>
+          <span class="ptag">YouTube</span>
+          <span class="ptag">Colour Grade</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. Brand Commercials HALF (Shorts 9:16) -->
+    <div class="project-card portrait">
+      <div class="project-thumb">
+        <iframe class="proj-video" src="https://www.youtube.com/embed/jukV4ETET7A" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <span class="proj-badge">Commercial</span>
+      </div>
+      <div class="proj-info">
+        <h3 class="proj-title">BRAND COMMERCIALS</h3>
+        <p class="proj-desc">Product commercial shots with rich close-ups and owner POV - the founder speaking directly, telling their story and what makes their brand worth choosing.</p>
+        <div class="proj-tags">
+          <span class="ptag">Product Shots</span>
+          <span class="ptag">Owner POV</span>
+          <span class="ptag">Ad Creative</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. Brand Promotion HALF (Shorts 9:16) -->
+    <div class="project-card portrait">
+      <div class="project-thumb">
+        <iframe class="proj-video" src="https://www.youtube.com/embed/H6JQitlT6kg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <span class="proj-badge">Promotion</span>
+      </div>
+      <div class="proj-info">
+        <h3 class="proj-title">BRAND PROMOTION VIDEOS</h3>
+        <p class="proj-desc">Visually rich storytelling with colour grading, music, and carefully composed frames - designed to help brands stand out in the market by clearly communicating their USP.</p>
+        <div class="proj-tags">
+          <span class="ptag">Brand Promo</span>
+          <span class="ptag">Colour Grade</span>
+          <span class="ptag">Storytelling</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. Fitness FULL -->
+    <div class="project-card card-full">
+      <div class="project-thumb">
+        <iframe class="proj-video" src="https://www.youtube.com/embed/-erpVuEJpBQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <span class="proj-badge">Fitness</span>
+      </div>
+      <div class="proj-info">
+        <h3 class="proj-title">FITNESS REELS &amp; CONTENT</h3>
+        <p class="proj-desc">High-energy reels and YouTube content for fitness creators - punchy edits, bold captions, and pacing that keeps viewers hooked till the end.</p>
+        <div class="proj-tags">
+          <span class="ptag">Reels</span>
+          <span class="ptag">YouTube</span>
+          <span class="ptag">Fitness</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6. Event FULL -->
+    <div class="project-card card-full">
+      <div class="project-thumb">
+        <iframe class="proj-video" src="https://www.youtube.com/embed/pDiq9WkxJtM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <span class="proj-badge">Event</span>
+      </div>
+      <div class="proj-info">
+        <h3 class="proj-title">EVENT COVERAGE &amp; HIGHLIGHT REEL</h3>
+        <p class="proj-desc">Full event coverage turned into a cinematic highlight reel - multi-camera editing and emotional pacing that captures every key moment your audience will want to relive.</p>
+        <div class="proj-tags">
+          <span class="ptag">Event</span>
+          <span class="ptag">Highlight Reel</span>
+          <span class="ptag">Multi-Cam</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- WHY CHOOSE ME -->
+<div class="section-header">
+  <span class="section-num">02 //</span>
+  <h2 class="section-title">WHY CHOOSE ME</h2>
+  <div class="section-line"></div>
+</div>
+<section class="usp">
+  <div class="accordion">
+
+    <div class="acc-item active">
+      <button class="acc-question" onclick="toggleAcc(this)">
+        <div class="acc-q-left">
+          <span class="acc-num">01</span>
+          <span class="acc-q-text">Lightning Fast Delivery</span>
+        </div>
+        <span class="acc-icon">+</span>
+      </button>
+      <div class="acc-answer">
+        <p class="acc-a-text">For events, I deliver the highlight video before the event even wraps up - so you can share it live with your audience on the spot. No waiting days for your content.</p>
+      </div>
+    </div>
+
+    <div class="acc-item">
+      <button class="acc-question" onclick="toggleAcc(this)">
+        <div class="acc-q-left">
+          <span class="acc-num">02</span>
+          <span class="acc-q-text">Personalised Approach</span>
+        </div>
+        <span class="acc-icon">+</span>
+      </button>
+      <div class="acc-answer">
+        <p class="acc-a-text">Every project is treated uniquely. I take time to understand your brand, your audience, and your goals - so the final video feels like YOU, not just another template edit.</p>
+      </div>
+    </div>
+
+    <div class="acc-item">
+      <button class="acc-question" onclick="toggleAcc(this)">
+        <div class="acc-q-left">
+          <span class="acc-num">03</span>
+          <span class="acc-q-text">Professional Camera, Gimbal &amp; iPhone</span>
+        </div>
+        <span class="acc-icon">+</span>
+      </button>
+      <div class="acc-answer">
+        <p class="acc-a-text">Shot with professional cameras, gimbals, and iPhones - giving you cinematic quality across all formats. No shaky handheld clips - every frame is clean, steady, and visually polished from the start.</p>
+      </div>
+    </div>
+
+    <div class="acc-item">
+      <button class="acc-question" onclick="toggleAcc(this)">
+        <div class="acc-q-left">
+          <span class="acc-num">04</span>
+          <span class="acc-q-text">Dedicated Team Behind Every Project</span>
+        </div>
+        <span class="acc-icon">+</span>
+      </button>
+      <div class="acc-answer">
+        <p class="acc-a-text">You're not working with a solo freelancer juggling 10 clients. My team is focused, collaborative, and fully committed to making your project the priority it deserves to be.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PERSONAL NOTE -->
+<section class="note-section">
+  <div class="note-wrapper">
+    <div class="note-top">
+      <span class="note-label">// A Note From Me</span>
+    </div>
+    <div class="note-content">
+      <p class="note-quote">"</p>
+      <div class="note-text">
+        <p class="note-main">I truly understand the hard work and dedication you've put into building your brand. Every late night, every decision, every risk you took - it matters.</p>
+        <p class="note-main">That's exactly why I don't just edit videos. I take the time to understand <span class="note-highlight">your story, your audience, and what makes your brand different</span> - because your content should feel like you, not like everyone else.</p>
+        <p class="note-main">My job is to translate all that effort into visuals that people actually stop and watch - content that builds trust, grows your audience, and makes your brand impossible to ignore in the digital space.</p>
+        <p class="note-sign">When you grow, we grow. That's the commitment.</p>
+      </div>
+    </div>
+    <div class="note-author">
+      <div class="note-line"></div>
+      <span class="note-name">Suren Naik</span>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<div class="section-header">
+  <span class="section-num">04 //</span>
+  <h2 class="section-title">CONTACT</h2>
+  <div class="section-line"></div>
+</div>
+<section class="contact">
+  <div class="contact-wrapper">
+    <div class="contact-left">
+      <p class="contact-tagline">// Got a project in mind?</p>
+      <h3 class="contact-heading">LET'S CREATE<br>SOMETHING<br>GREAT</h3>
+      <div class="contact-info">
+        <p class="contact-detail">✉ <span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="ddaea8afb8b3b3bcb4b6eceaedee9dbab0bcb4b1f3beb2b0">[email&#160;protected]</a></span></p>
+        <p class="contact-detail">◈ <span>@surennaik_17</span></p>
+        <p class="contact-detail">▶ <span>@Suren317</span></p>
+      </div>
+    </div>
+    <form class="contact-form" onsubmit="handleSubmit(event)">
+      <div class="form-group">
+        <label class="form-label">Full Name</label>
+        <input type="text" class="form-input" placeholder="Your full name" required>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Email Address</label>
+        <input type="email" class="form-input" placeholder="your@email.com" required>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Content Requirement</label>
+        <select class="form-select">
+          <option value="" disabled selected>Select a category</option>
+          <option>Real Estate Property Tour</option>
+          <option>Commercial / Product Video</option>
+          <option>Fitness Reels &amp; Content</option>
+          <option>Brand Promotion Video</option>
+          <option>Event Coverage &amp; Highlight Reel</option>
+          <option>Reels &amp; Shorts</option>
+          <option>Personal Branding</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Project Details</label>
+        <textarea class="form-textarea" placeholder="Tell me about your project - what you need, your timeline, budget, or anything else..."></textarea>
+      </div>
+      <button type="submit" class="form-submit">Send Message &#8594;</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-name">SUREN NAIK // VIDEO PORTFOLIO</span>
+  <div class="footer-links">
+    <a href="/cdn-cgi/l/email-protection#3e4d4b4c5b50505f57550f090e0d7e59535f5752105d5153" class="footer-email"><span class="__cf_email__" data-cfemail="82f1f7f0e7ecece3ebe9b3b5b2b1c2e5efe3ebeeace1edef">[email&#160;protected]</span></a>
+    <a href="https://www.instagram.com/surennaik_17/" target="_blank" class="footer-social">Instagram</a>
+    <a href="https://www.youtube.com/@Suren317" target="_blank" class="footer-social footer-yt">YouTube</a>
+  </div>
+</footer>
+
+</main>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+function toggleAcc(btn) {
+  const items = document.querySelectorAll('.acc-item');
+  const current = btn.closest('.acc-item');
+  items.forEach(function(item) {
+    if (item !== current) item.classList.remove('active');
+  });
+  current.classList.toggle('active');
+}
+function handleSubmit(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('.form-submit');
+  btn.textContent = '✓ Message Sent!';
+  btn.style.borderColor = '#00ff88';
+  btn.style.color = '#00ff88';
+  setTimeout(function() {
+    btn.textContent = 'Send Message →';
+    btn.style.borderColor = '';
+    btn.style.color = '';
+    e.target.reset();
+  }, 3000);
+}
+</script>
+</body>
+</html>
